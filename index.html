@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Strava Auth Helper</title>
+</head>
+<body style="text-align:center;margin-top:50px;">
+
+<h1>Strava OAuth Helper</h1>
+
+<div id="content">
+  <p>Click below to authorize Strava:</p>
+  <a href="https://www.strava.com/oauth/authorize?client_id=168168&response_type=code&redirect_uri=https://dungdinh301.github.io/stravarunning/&scope=activity:read_all&approval_prompt=auto">
+    <button style="padding: 10px 20px; font-size: 18px;">Authorize Strava 🚴</button>
+  </a>
+</div>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const code = params.get("code");
+  if (code) {
+    document.getElementById("content").innerHTML = `
+      <h2>✅ Authorization Code</h2>
+      <p>Here is your code. Copy it and use it in your Python script:</p>
+      <code style="font-size: 18px; color: green;">${code}</code>
+      <p><br><a href="https://dungdinh301.github.io/stravarunning/">🔄 Start over</a></p>
+    `;
+  }
+</script>
+
+</body>
+</html>
